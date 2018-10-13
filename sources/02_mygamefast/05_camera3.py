@@ -16,7 +16,7 @@ class MyApp(ShowBase):
 
 
         self.stuff = self.loader.loadModel("camera.egg")
-        self.stuff.setPos(self.player,0,0,10)
+        self.stuff.setPos(self.player,-2,0,10)
         self.stuff.setHpr(90,-90,0)
         self.stuff.reparentTo(self.render)
 
