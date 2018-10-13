@@ -9,8 +9,10 @@ class MyApp(ShowBase):
         self.world.reparentTo(self.render)
 
         self.player = self.loader.loadModel("alliedflanker.egg")
-        self.player.setPos(0,220,85)
-        #self.player.setH(90)
+
+        # Avion à la cascade aux ecrevisses, direction EST!
+        self.player.setPos(20,220,85)
+        self.player.setH(180)
         self.player.reparentTo(self.render)
 
 
@@ -26,8 +28,9 @@ class MyApp(ShowBase):
         # see issue content for how we calculated these:
         self.camera.setPos(self.player, 25.6225, 3.8807, 10.2779)
         self.camera.setHpr(self.player,94.8996,-16.6549,1.55508)
-        self.camera.setPos( 0, 0, 600)
-        self.camera.lookAt(Point3(320,320,0))
+        self.camera.setPos( 0, 0, 2000)
+        #self.camera.lookAt(self.world,320,320,0)
+        self.camera.lookAt(self.player)
 
 app = MyApp()
 app.run()

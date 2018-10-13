@@ -10,21 +10,18 @@ class MyApp(ShowBase):
 
         self.player = self.loader.loadModel("alliedflanker.egg")
         #self.player.setPos(640,640,85)
-        self.player.setPos(200,0,85)
+
+        # Avion à la pointe des chateaux, direction Ouest !
+        self.player.setPos(1200,320,85)
         self.player.setH(0)
 
         self.player.reparentTo(self.render)
 
-        self.stuff = self.loader.loadModel("camera.egg")
-        self.stuff.setPos(self.player,-100,0,0)
-        self.stuff.setHpr(90,-90,0)
-        self.stuff.reparentTo(self.render)
-
 
         # performance (to be masked later by fog) and view:
-        self.maxdistance = 400
-        self.camLens.setFar(self.maxdistance)
-        self.camLens.setFov(60)
+        #self.maxdistance = 400
+        #self.camLens.setFar(self.maxdistance)
+        #self.camLens.setFov(60)
 
         self.taskMgr.add(self.updateTask, "update")
         self.keyboardSetup()
@@ -93,7 +90,7 @@ class MyApp(ShowBase):
         #speedfactor = scalefactor * 2.9
         climbfactor = scalefactor * 0.5 *2
         bankfactor = scalefactor *2.0
-        speedfactor = scalefactor * 2.9 *2
+        speedfactor = scalefactor * 2.9
 
         # move forwards - our X/Y is inverted, see the issue
         self.player.setX(self.player,-speedfactor)
