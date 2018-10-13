@@ -9,4 +9,6 @@ Il y aura ici :
 
 - une aide pour l'installation : [INSTALL.md](doc/INSTALL.md)
 
-- des sources à tester.
+- des tutoriels : [doc/tutos](doc/tutos.md)
+
+- des sources à tester : dans le répertoire *sources*
