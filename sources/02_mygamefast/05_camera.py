@@ -12,6 +12,11 @@ class MyApp(ShowBase):
         self.player.setH(90)
         self.player.reparentTo(self.render)
 
+        self.stuff = self.loader.loadModel("camera.egg")
+        self.stuff.setPos(self.player, 0,0,10)
+        self.stuff.reparentTo(self.render)
+
+
         # performance (to be masked later by fog) and view:
         self.maxdistance = 400
         self.camLens.setFar(self.maxdistance)
