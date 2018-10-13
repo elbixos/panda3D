@@ -5,8 +5,8 @@ class MyApp(ShowBase):                          # our 'class'
     def __init__(self):
         ShowBase.__init__(self)                        # initialise
         terrain = GeoMipTerrain("worldTerrain")        # create a terrain
-        terrain.setHeightfield("gwadaHeight.png")        # set the height map
-        terrain.setColorMap("gwadaTexture.jpg")           # set the colour map
+        terrain.setHeightfield("gwadaHeightSmall.png")        # set the height map
+        terrain.setColorMap("gwadaTextureSmall.jpg")           # set the colour map
         #terrain.setBruteforce(True)                    # level of detail
         root = terrain.getRoot()                       # capture root
         root.reparentTo(render)                        # render from root
