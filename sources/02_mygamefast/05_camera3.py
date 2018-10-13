@@ -1,4 +1,6 @@
 from direct.showbase.ShowBase import ShowBase
+from math import pi, sin, cos
+
 
 class MyApp(ShowBase):
 
@@ -12,6 +14,14 @@ class MyApp(ShowBase):
         self.player.setH(90)
         self.player.reparentTo(self.render)
 
+
+        self.stuff = self.loader.loadModel("camera.egg")
+        self.stuff.setPos(self.player,0,0,10)
+        self.stuff.setHpr(90,-90,0)
+        self.stuff.reparentTo(self.render)
+
+
+
         # performance (to be masked later by fog) and view:
         self.maxdistance = 400
         self.camLens.setFar(self.maxdistance)
@@ -22,10 +32,8 @@ class MyApp(ShowBase):
 
     def updateCamera(self):
         # see issue content for how we calculated these:
-        #self.camera.setPos(self.player, 25.6225, 3.8807, 10.2779)
-        #self.camera.setHpr(self.player,94.8996,-16.6549,1.55508)
-        self.camera.setPos(self.player, 20, 0, 10)
-        self.camera.setHpr(self.player,90,-45,20)
+        self.camera.setPos(self.player, 0, 0, 20)
+        self.camera.lookAt(self.player)
 
 app = MyApp()
 app.run()
