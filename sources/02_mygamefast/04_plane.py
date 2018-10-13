@@ -8,10 +8,9 @@ class MyApp(ShowBase):
         self.world.reparentTo(self.render)
 
         self.player = self.loader.loadModel("alliedflanker.egg")
-        self.player.setPos(20,20,65)
-        self.player.setH(225)
+        self.player.setPos(220,220,85)
+        self.player.setH(90)
         self.player.reparentTo(self.render)
-
 
 
 app = MyApp()
