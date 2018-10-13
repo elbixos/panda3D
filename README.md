@@ -11,4 +11,4 @@ Il y aura ici :
 
 - des tutoriels : [doc/tutos](doc/tutos.md)
 
-- des sources à tester : dans le répertoire *sources*
+- des sources à tester : dans le répertoire *sources* du dépot github.
