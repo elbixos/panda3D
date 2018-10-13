@@ -1,6 +1,9 @@
 # Exemples of panda
 /samples/
 
+# les fichiers models de panda
+*.bam
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
