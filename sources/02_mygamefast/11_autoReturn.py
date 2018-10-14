@@ -139,6 +139,17 @@ class MyApp(ShowBase):
             self.player.setZ(self.player.getZ()-climbfactor)
             self.player.setR(self.player.getR()-climbfactor)
 
+
+        elif (self.player.getR() > 0): # autoreturn from up
+            self.player.setR(self.player.getR()-(climbfactor+0.1))
+            if (self.player.getR() < 0):
+                self.player.setR(0)
+        # avoid jitter
+        elif (self.player.getR() < 0): # autoreturn from down
+            self.player.setR(self.player.getR()+(climbfactor+0.1))
+            if (self.player.getR() > 0):
+                self.player.setR(0)
+
         # and now the X/Y world boundaries:
         if (self.player.getX() < 0):
              self.player.setX(0)
