@@ -23,9 +23,9 @@ class MyApp(ShowBase):
 
 
         # performance (to be masked later by fog) and view:
-        self.maxdistance = 400
-        self.camLens.setFar(self.maxdistance)
-        self.camLens.setFov(30)
+        self.maxdistance = 1200
+        #self.camLens.setFar(self.maxdistance)
+        #self.camLens.setFov(30)
 
         self.taskMgr.add(self.updateTask, "update")
         self.keyboardSetup()
@@ -190,7 +190,7 @@ class MyApp(ShowBase):
         colour = (0.0,0.0,0.0)
         expfog = Fog("scene-wide-fog")
         expfog.setColor(*colour)
-        expfog.setExpDensity(0.004)
+        expfog.setExpDensity(0.001) # original : 0.004
         render.setFog(expfog)
         base.setBackgroundColor(*colour)
 
