@@ -122,10 +122,14 @@ class MyApp(ShowBase):
         if (self.keyMap["left"]!=0 and self.speed > 0.0):
             self.player.setH(self.player.getH()+bankfactor)
             self.player.setP(self.player.getP()+bankfactor)
+            if (self.player.getP() >= 180):
+                self.player.setP(-180)
 
         elif (self.keyMap["right"]!=0 and self.speed > 0.0):
             self.player.setH(self.player.getH()-bankfactor)
             self.player.setP(self.player.getP()-bankfactor)
+            if (self.player.getP() <= -180):
+                self.player.setP(180)
 
         elif (self.player.getP() > 0): # autoreturn from right
             self.player.setP(self.player.getP()-(bankfactor+0.1))
@@ -141,10 +145,14 @@ class MyApp(ShowBase):
             # faster you go, quicker you climb
             self.player.setZ(self.player.getZ()+climbfactor)
             self.player.setR(self.player.getR()+climbfactor)
+            if (self.player.getR() >= 180):
+                self.player.setR(-180)
 
         elif (self.keyMap["fall"]!=0 and self.speed > 0.00):
             self.player.setZ(self.player.getZ()-climbfactor)
             self.player.setR(self.player.getR()-climbfactor)
+            if (self.player.getR() <= -180):
+                self.player.setR(180)
 
 
         elif (self.player.getR() > 0): # autoreturn from up
@@ -168,23 +176,7 @@ class MyApp(ShowBase):
         elif (self.player.getY() > self.worldsize):
             self.player.setY(self.worldsize)
 
-            # quickest return:
-            # if (self.player.getP() >= 180):
-            #     self.player.setP(-180)
-            # elif (self.keyMap[“right”]!=0 and self.speed > 0.0):
-            #     self.player.setH(self.player.getH()-bankfactor)
-            #     self.player.setP(self.player.getP()-bankfactor)
-            #
-            # if (self.player.getP() <= -180): self.player.setP(180) # autoreturn elif (self.player.getP() > 0):
-            #     self.player.setP(self.player.getP()-(bankfactor+0.1))
-            #
-            # if (self.player.getP() < 0):
-            #     self.player.setP(0)
-            # elif (self.player.getP() < 0):
-            #     self.player.setP(self.player.getP()+(bankfactor+0.1))
-            #
-            #     if (self.player.getP() > 0):
-            #         self.player.setP(0)
+
     def createEnvironment(self):
         # Fog to hide a performance tweak:
         colour = (0.0,0.0,0.0)
