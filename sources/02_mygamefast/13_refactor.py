@@ -4,7 +4,7 @@ from direct.interval.LerpInterval import LerpTexOffsetInterval, LerpPosInterval
 from pandac.PandaModules import CompassEffect, CollisionTraverser, CollisionNode
 from pandac.PandaModules import CollisionSphere, CollisionHandlerQueue, Material
 from pandac.PandaModules import VBase4, VBase3, TransparencyAttrib
-from panda3d.core import AmbientLight, DirectionalLight, Vec4, Vec3, Fog
+from panda3d.core import AmbientLight, DirectionalLight, Vec4, Vec3, Fog, Point3
 from panda3d.core import BitMask32, Texture, TextNode, TextureStage
 from panda3d.core import NodePath, PandaNode
 from direct.gui.OnscreenText import OnscreenText
@@ -24,15 +24,21 @@ class MyApp(ShowBase):
         self.world = self.loader.loadModel("world.bam")
         self.world.reparentTo(self.render)
 
+
+
+
+        self.maxspeed = 100.0
+        # Avion à la pointe des chateaux, direction Ouest !
+        self.startPos = Vec3(1200,320,85)
+        #print (self.startPos)
+        self.startHpr = Vec3(0,0,0)
+        #self.player.setPos(1200,320,85)
+        #self.player.setH(0)
         self.player = self.loader.loadModel("alliedflanker.egg")
         #self.player.setPos(640,640,85)
-
-
-        # Avion à la pointe des chateaux, direction Ouest !
-        self.player.setPos(1200,320,85)
-        self.player.setH(0)
-
+        self.player.setScale(0.2,0.2,0.2)
         self.player.reparentTo(self.render)
+        self.resetPlayer()
 
 
 
@@ -44,9 +50,8 @@ class MyApp(ShowBase):
         self.taskMgr.add(self.updateTask, "update")
         self.keyboardSetup()
 
-        self.speed = 10.0
-        self.maxspeed = 100.0
-        self.player.setScale(.2,.2,.2)
+
+
 
         # relevant for world boundaries
         self.worldsize = 1024
@@ -55,6 +60,18 @@ class MyApp(ShowBase):
 
         self.setupCollisions()
         self.textCounter = 0
+
+    def resetPlayer(self):
+        self.player.show()
+        #self.player.setPos(self.world,self.startPos)
+        #self.player.setHpr(self.world,self.startHpr)
+        self.player.setPos(self.startPos)
+        self.player.setHpr(self.startHpr)
+        self.speed = 10.0
+        #self.speed = self.maxspeed/2
+
+        #print (self.player.getPos())
+
 
     def makeStatusLabel(self, i):
         return OnscreenText(style=2, fg=(.5,1,.5,1), pos=(-1.3,0.92-(.08 * i)), \
@@ -199,7 +216,7 @@ class MyApp(ShowBase):
         elif (self.player.getZ() < 0):
             self.player.setZ(0)
 
-        print (self.player.getZ())
+        #print (self.player.getPos())
 
         # and now the X/Y world boundaries:
         if (self.player.getX() < 0):
