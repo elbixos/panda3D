@@ -165,6 +165,16 @@ class MyApp(ShowBase):
             if (self.player.getR() > 0):
                 self.player.setR(0)
 
+        # respect max camera distance else you
+        # cannot see the floor post loop the loop!
+        if (self.player.getZ() > self.maxdistance):
+            self.player.setZ(self.maxdistance)
+        # should never happen once we add collision, but in case:
+        elif (self.player.getZ() < 1):
+            self.player.setZ(1)
+
+        print (self.player.getZ())
+
         # and now the X/Y world boundaries:
         if (self.player.getX() < 0):
              self.player.setX(0)
