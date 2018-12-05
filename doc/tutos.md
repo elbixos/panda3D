@@ -6,3 +6,6 @@ Pour le moment, je me contente de suivre calmement
 
 J'ai ensuite foncé sur le suivant :
 [http://www.mygamefast.com/volume1/issue1/](http://www.mygamefast.com/volume1/issue1/)
+
+Enfin, j'ai aussi a vous proposer le jeu des allumettes fait maison en version panda3D.
+en dépot github [https://github.com/elbixos/pandAllumettes](https://github.com/elbixos/pandAllumettes)
